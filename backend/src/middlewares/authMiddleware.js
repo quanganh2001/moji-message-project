@@ -1,3 +1,4 @@
+// @ts-nocheck
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 
@@ -19,11 +20,12 @@ export const protectedRoute = (req, res, next) => {
 
         return res.status(403).json({ message: 'Access token hết hạn hoặc không đúng' });
       }
+
       // tìm user
       const user = await User.findById(decodedUser.userId).select('-hashedPassword');
 
       if (!user) {
-        return res.status(404).json({ message: 'người dùng không tồn tại' });
+        return res.status(404).json({ message: 'người dùng không tồn tại.' });
       }
 
       // trả user về trong req

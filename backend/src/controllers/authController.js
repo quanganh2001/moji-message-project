@@ -1,10 +1,11 @@
+// @ts-nocheck
 import bcrypt from 'bcrypt';
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import Session from '../models/Session.js';
 
-const ACCESS_TOKEN_TTL = '30m'; // thường là dưới 15m
+const ACCESS_TOKEN_TTL = '30m'; // thuờng là dưới 15m
 const REFRESH_TOKEN_TTL = 14 * 24 * 60 * 60 * 1000; // 14 ngày
 
 export const signUp = async (req, res) => {
@@ -12,7 +13,9 @@ export const signUp = async (req, res) => {
     const { username, password, email, firstName, lastName } = req.body;
 
     if (!username || !password || !email || !firstName || !lastName) {
-      return res.status(400).json({ message: 'Không thể thiếu username, password, email, firstName, lastName' });
+      return res.status(400).json({
+        message: 'Không thể thiếu username, password, email, firstName, và lastName',
+      });
     }
 
     // kiểm tra username tồn tại chưa
@@ -22,7 +25,7 @@ export const signUp = async (req, res) => {
       return res.status(409).json({ message: 'username đã tồn tại' });
     }
 
-    // mã hóa password
+    // mã hoá password
     const hashedPassword = await bcrypt.hash(password, 10); // salt = 10
 
     // tạo user mới
@@ -34,7 +37,7 @@ export const signUp = async (req, res) => {
     });
 
     // return
-    return res.status(204);
+    return res.sendStatus(204);
   } catch (error) {
     console.error('Lỗi khi gọi signUp', error);
     return res.status(500).json({ message: 'Lỗi hệ thống' });
@@ -86,7 +89,7 @@ export const signIn = async (req, res) => {
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
       secure: true,
-      sameSite: 'none', // backend, frontend deploy riêng
+      sameSite: 'none', //backend, frontend deploy riêng
       maxAge: REFRESH_TOKEN_TTL,
     });
 
@@ -104,10 +107,10 @@ export const signOut = async (req, res) => {
     const token = req.cookies?.refreshToken;
 
     if (token) {
-      // xóa refresh token trong session
+      // xoá refresh token trong Session
       await Session.deleteOne({ refreshToken: token });
 
-      // xóa cookie
+      // xoá cookie
       res.clearCookie('refreshToken');
     }
 
@@ -131,12 +134,12 @@ export const refreshToken = async (req, res) => {
     const session = await Session.findOne({ refreshToken: token });
 
     if (!session) {
-      return res.status(403).json({ message: 'Token không tồn tại hoặc đã hết hạn' });
+      return res.status(403).json({ message: 'Token không hợp lệ hoặc đã hết hạn' });
     }
 
     // kiểm tra hết hạn chưa
     if (session.expiresAt < new Date()) {
-      return res.status(403).json({ message: 'Token đã hết hạn' });
+      return res.status(403).json({ message: 'Token đã hết hạn.' });
     }
 
     // tạo access token mới

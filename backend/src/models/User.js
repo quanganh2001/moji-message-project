@@ -29,11 +29,11 @@ const userSchema = new mongoose.Schema(
       type: String, // link CDN để hiển thị hình
     },
     avatarId: {
-      type: String, // Cloudinary public_id để xóa hình
+      type: String, // Cloudinary public_id để xoá hình
     },
     bio: {
       type: String,
-      maxlength: 500, // tùy
+      maxlength: 500, // tuỳ
     },
     phone: {
       type: String,

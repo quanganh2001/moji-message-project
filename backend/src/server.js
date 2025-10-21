@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// middleware
+// middlewares
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
@@ -26,6 +26,6 @@ app.use('/api/users', userRoute);
 
 connectDB().then(() => {
   app.listen(PORT, () => {
-    console.log(`Server bắt đầu trên cổng ${PORT}`);
+    console.log(`server bắt đầu trên cổng ${PORT}`);
   });
 });
