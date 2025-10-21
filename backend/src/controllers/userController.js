@@ -8,3 +8,5 @@ export const authMe = async (req, res) => {
     return res.status(500).json({ message: 'Lỗi hệ thống' });
   }
 };
+
+export const test = async (req, res) => {};
