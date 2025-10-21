@@ -55,7 +55,7 @@ export function SignupForm({ className, ...props }: React.ComponentProps<'div'>)
                 <p className="text-muted-foreground text-balance">Chào mừng bạn! Hãy đăng ký để bắt đầu!</p>
               </div>
 
-              {/* họ và tên */}
+              {/* họ & tên */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-2">
                   <Label htmlFor="lastname" className="block text-sm">
@@ -66,11 +66,10 @@ export function SignupForm({ className, ...props }: React.ComponentProps<'div'>)
                   {errors.lastname && <p className="text-destructive text-sm">{errors.lastname.message}</p>}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="firstname" className="block text-sm">
+                  <Label htmlFor="fistname" className="block text-sm">
                     Tên
                   </Label>
                   <Input type="text" id="firstname" {...register('firstname')} />
-
                   {errors.firstname && <p className="text-destructive text-sm">{errors.firstname.message}</p>}
                 </div>
               </div>
@@ -81,7 +80,6 @@ export function SignupForm({ className, ...props }: React.ComponentProps<'div'>)
                   Tên đăng nhập
                 </Label>
                 <Input type="text" id="username" placeholder="moji" {...register('username')} />
-
                 {errors.username && <p className="text-destructive text-sm">{errors.username.message}</p>}
               </div>
 
@@ -91,7 +89,6 @@ export function SignupForm({ className, ...props }: React.ComponentProps<'div'>)
                   Email
                 </Label>
                 <Input type="email" id="email" placeholder="m@gmail.com" {...register('email')} />
-
                 {errors.email && <p className="text-destructive text-sm">{errors.email.message}</p>}
               </div>
 
@@ -101,7 +98,6 @@ export function SignupForm({ className, ...props }: React.ComponentProps<'div'>)
                   Mật khẩu
                 </Label>
                 <Input type="password" id="password" {...register('password')} />
-
                 {errors.password && <p className="text-destructive text-sm">{errors.password.message}</p>}
               </div>
 
@@ -123,7 +119,7 @@ export function SignupForm({ className, ...props }: React.ComponentProps<'div'>)
           </div>
         </CardContent>
       </Card>
-      <div className="text-xs text-balance px-6 text-center *:[a]:hover:text-primary text-muted-foreground *:[a]:underline *:[a]:underline-offset-4">
+      <div className=" text-xs text-balance px-6 text-center *:[a]:hover:text-primary text-muted-foreground *:[a]:underline *:[a]:underline-offetset-4">
         Bằng cách tiếp tục, bạn đồng ý với <a href="#">Điều khoản dịch vụ</a> và <a href="#">Chính sách bảo mật</a> của
         chúng tôi.
       </div>

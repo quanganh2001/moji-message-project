@@ -55,7 +55,6 @@ export function SigninForm({ className, ...props }: React.ComponentProps<'div'>)
                   Tên đăng nhập
                 </Label>
                 <Input type="text" id="username" placeholder="moji" {...register('username')} />
-
                 {errors.username && <p className="text-destructive text-sm">{errors.username.message}</p>}
               </div>
 
@@ -65,7 +64,6 @@ export function SigninForm({ className, ...props }: React.ComponentProps<'div'>)
                   Mật khẩu
                 </Label>
                 <Input type="password" id="password" {...register('password')} />
-
                 {errors.password && <p className="text-destructive text-sm">{errors.password.message}</p>}
               </div>
 
@@ -87,7 +85,7 @@ export function SigninForm({ className, ...props }: React.ComponentProps<'div'>)
           </div>
         </CardContent>
       </Card>
-      <div className="text-xs text-balance px-6 text-center *:[a]:hover:text-primary text-muted-foreground *:[a]:underline *:[a]:underline-offset-4">
+      <div className=" text-xs text-balance px-6 text-center *:[a]:hover:text-primary text-muted-foreground *:[a]:underline *:[a]:underline-offetset-4">
         Bằng cách tiếp tục, bạn đồng ý với <a href="#">Điều khoản dịch vụ</a> và <a href="#">Chính sách bảo mật</a> của
         chúng tôi.
       </div>

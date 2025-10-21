@@ -37,8 +37,6 @@ api.interceptors.response.use(
     if (error.response?.status === 403 && originalRequest._retryCount < 4) {
       originalRequest._retryCount += 1;
 
-      console.log('refresh', originalRequest._retryCount);
-
       try {
         const res = await api.post('/auth/refresh', { withCredentials: true });
         const newAccessToken = res.data.accessToken;

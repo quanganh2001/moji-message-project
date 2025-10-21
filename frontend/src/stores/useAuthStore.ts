@@ -11,17 +11,16 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   setAccessToken: (accessToken) => {
     set({ accessToken });
   },
-
   clearState: () => {
     set({ accessToken: null, user: null, loading: false });
   },
 
-  signUp: async (username, password, email, firstname, lastname) => {
+  signUp: async (username, password, email, firstName, lastName) => {
     try {
       set({ loading: true });
 
-      // gọi api
-      await authService.signUp(username, password, email, firstname, lastname);
+      //  gọi api
+      await authService.signUp(username, password, email, firstName, lastName);
 
       toast.success('Đăng ký thành công! Bạn sẽ được chuyển sang trang đăng nhập.');
     } catch (error) {
@@ -57,7 +56,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       toast.success('Logout thành công!');
     } catch (error) {
       console.error(error);
-      toast.error('Lỗi xảy ra khi logout. Hãy thử lại');
+      toast.error('Lỗi xảy ra khi logout. Hãy thử lại!');
     }
   },
 
