@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 
 // swagger
-const swaggerDocument = JSON.parse(fs.readFileSync('./swagger.json', 'utf8'));
+const swaggerDocument = JSON.parse(fs.readFileSync('./src/swagger.json', 'utf8'));
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
