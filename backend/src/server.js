@@ -4,6 +4,7 @@ import { connectDB } from './libs/db.js';
 import authRoute from './routes/authRoute.js';
 import userRoute from './routes/userRoute.js';
 import friendRoute from './routes/friendRoute.js';
+import messageRoute from './routes/messageRoute.js';
 import cookieParser from 'cookie-parser';
 import { protectedRoute } from './middlewares/authMiddleware.js';
 import cors from 'cors';
@@ -25,6 +26,7 @@ app.use('/api/auth', authRoute);
 app.use(protectedRoute);
 app.use('/api/users', userRoute);
 app.use('/api/friends', friendRoute);
+app.use('/api/messages', messageRoute);
 
 connectDB().then(() => {
   app.listen(PORT, () => {
